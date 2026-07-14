@@ -13,7 +13,7 @@ import logoJbConnect from '@/assets/images/jbc-favicon.jpg';
 import logoAdplay from '@/assets/images/adplay_mobile_logo.jpeg';
 import logoNvisio from '@/assets/images/nvisio_solutions_logo.jpeg';
 import logoBanglamark from '@/assets/images/banglamark.jpg';
-import project1Placeholder from '@/assets/images/project-1-placeholder.svg';
+import project1Placeholder from '@/assets/images/project-porfolio-1.png';
 import project2Placeholder from '@/assets/images/project-2-placeholder.svg';
 import project3Placeholder from '@/assets/images/project-3-placeholder.svg';
 import project4Placeholder from '@/assets/images/project-4-placeholder.svg';
