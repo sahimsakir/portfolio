@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.22"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="#131316"/>
+  <rect width="800" height="450" fill="url(#bg3)"/>
+  <rect x="36" y="36" width="120" height="14" rx="7" fill="#232328"/>
+  <rect x="36" y="180" width="500" height="22" rx="4" fill="#232328"/>
+  <rect x="36" y="215" width="340" height="14" rx="4" fill="#232328"/>
+  <text x="400" y="330" font-family="JetBrains Mono, monospace" font-size="18" fill="#5C5C66" text-anchor="middle">REPLACE: blog-3-cover.png</text>
+</svg>

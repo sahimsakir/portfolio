@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-surface-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-body antialiased transition-colors duration-300;
+  }
+
+  ::selection {
+    @apply bg-accent-indigo/30 text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #232328;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6366f1;
+  }
+}
+
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
+  }
+
+  /* Premium glass card — soft border, subtle depth, no heavy blur banding */
+  .glass-card {
+    @apply relative rounded-[20px] border border-white/[0.07] bg-white/[0.025] backdrop-blur-xl;
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-500 ease-out hover:-translate-y-1 hover:border-accent-indigo/40 hover:shadow-lift;
+  }
+
+  /* kbd-style chip eyebrow — Raycast/Linear inspired, replaces the old terminal "$ prompt" look */
+  .kbd-eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-ink-dim;
+  }
+
+  .kbd-dot {
+    @apply relative flex h-1.5 w-1.5 shrink-0 rounded-full bg-accent-indigo;
+  }
+
+  .kbd-dot::after {
+    content: '';
+    @apply absolute inset-0 animate-ping rounded-full bg-accent-indigo/60;
+  }
+
+  .kbd-key {
+    @apply inline-flex items-center justify-center rounded-md border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] text-ink-dim shadow-[inset_0_-1px_0_rgba(255,255,255,0.06)];
+  }
+
+  .gradient-text {
+    @apply bg-grad-primary bg-clip-text text-transparent;
+  }
+
+  .btn-gradient {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-grad-primary px-6 py-3 font-medium text-white shadow-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-glow-cyan active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.02] px-6 py-3 font-medium text-ink transition-all duration-300 hover:border-accent-indigo/50 hover:bg-white/[0.05];
+  }
+
+  .section-heading {
+    @apply font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl;
+  }
+
+  /* ripple effect for buttons/cards on click */
+  .ripple {
+    @apply relative overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .bg-noise {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .text-shimmer {
+    background: linear-gradient(90deg, #9797a3 0%, #f2f2f5 50%, #9797a3 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 2.2s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Unlayered on purpose: cascade layers always lose to unlayered rules,
+   so these light-theme overrides reliably beat @layer base/components/utilities. */
+html.light body {
+  background-color: #fafafa;
+  color: #0d0d10;
+}
+
+html.light .glass-card {
+  background-color: rgba(9, 9, 11, 0.025);
+  border-color: rgba(9, 9, 11, 0.08);
+}
+
+html.light .bg-canvas {
+  background-color: #fafafa !important;
+}
+
+html.light .text-ink {
+  color: #0d0d10 !important;
+}
+
+html.light .text-ink-dim {
+  color: #52525b !important;
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3E7BFA"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="#131316"/>
+  <circle cx="200" cy="160" r="70" fill="none" stroke="url(#pg)" stroke-width="3"/>
+  <path d="M80 340 Q200 240 320 340" fill="none" stroke="url(#pg)" stroke-width="3"/>
+  <text x="200" y="380" font-family="JetBrains Mono, monospace" font-size="14" fill="#6B6B75" text-anchor="middle">REPLACE: profile-photo.jpg</text>
+</svg>

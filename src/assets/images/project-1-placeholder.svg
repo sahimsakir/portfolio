@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3E7BFA" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="#131316"/>
+  <rect width="800" height="500" fill="url(#g1)"/>
+  <rect x="40" y="40" width="720" height="30" rx="6" fill="#1B1B20"/>
+  <circle cx="60" cy="55" r="6" fill="#3E7BFA"/>
+  <circle cx="80" cy="55" r="6" fill="#8B5CF6"/>
+  <circle cx="100" cy="55" r="6" fill="#22C55E"/>
+  <rect x="40" y="100" width="500" height="24" rx="4" fill="#1B1B20"/>
+  <rect x="40" y="140" width="340" height="16" rx="4" fill="#1B1B20"/>
+  <text x="400" y="300" font-family="JetBrains Mono, monospace" font-size="20" fill="#6B6B75" text-anchor="middle">REPLACE: project-1-screenshot.png</text>
+</svg>
