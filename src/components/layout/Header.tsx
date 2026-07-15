@@ -8,9 +8,7 @@ import { useActiveSection } from '@/hooks/useActiveSection';
 import { useTheme } from '@/context/ThemeContext';
 import { scrollToId, cn } from '@/utils/helpers';
 
-const anchorIds = NAV_LINKS
-  .filter((l) => l.type === 'anchor')
-  .map((l) => l.href.replace('#', ''));
+const anchorIds = NAV_LINKS.filter((l) => l.type === 'anchor').map((l) => l.href.replace('#', ''));
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -111,7 +109,9 @@ export function Header() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-40 transition-all duration-300',
-        scrolled || !isHome ? 'border-b border-white/[0.06] bg-canvas/80 backdrop-blur-lg' : 'bg-transparent'
+        scrolled || !isHome
+          ? 'border-b border-black/10 dark:border-white/10 bg-white/80 dark:bg-canvas/80 backdrop-blur-lg shadow-sm dark:shadow-none'
+          : 'bg-transparent'
       )}
     >
       <div className="container-shell flex h-16 items-center justify-between">

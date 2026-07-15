@@ -31,11 +31,12 @@ export function Projects() {
               viewport={viewportOnce}
             >
               <Card className="group flex h-full flex-col overflow-hidden p-0">
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden bg-surface-elevated">
                   <img
                     src={project.screenshot}
                     alt={project.title}
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    style={{ maxHeight: '240px' }}
                   />
                   {project.featured && (
                     <span className="absolute left-4 top-4 rounded-full bg-grad-primary px-3 py-1 font-mono text-[11px] text-white">
@@ -97,7 +98,11 @@ export function Projects() {
               className="glass-card max-h-[85vh] w-full max-w-2xl overflow-y-auto p-0"
             >
               <div className="relative">
-                <img src={active.screenshot} alt={active.title} className="aspect-[16/9] w-full object-cover" />
+                <img
+                  src={active.screenshot}
+                  alt={active.title}
+                  className="aspect-[16/9] w-full object-cover"
+                />
                 <button
                   onClick={() => setActive(null)}
                   aria-label="Close"
