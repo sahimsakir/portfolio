@@ -31,7 +31,7 @@ codebase for `PLACEHOLDER` and `isPlaceholder` to find every instance.
 | Achievement stats | `src/data/resume.ts` → `achievements` | Estimated from resume timeline — verify real numbers |
 | Certification issuers | `src/data/resume.ts` → `certifications` | A few issuing bodies weren't listed on the resume |
 | EmailJS credentials | `src/constants/index.ts` → `EMAILJS_CONFIG` | Create a free account at emailjs.com |
-| Domain / OG URL | `index.html`, `public/sitemap.xml`, `public/robots.txt` | Currently set to `sahimsakir.dev` |
+| Domain / OG URL | `index.html`, `public/sitemap.xml`, `public/robots.txt` | Currently set to `sahim.dev` |
 | Favicon / OG cover | `public/favicon.svg`, `public/og-cover.svg` | Simple generated marks — swap for real branding if desired |
 
 ## Tech stack

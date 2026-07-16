@@ -10,7 +10,7 @@ export const NAV_LINKS = [
 
 export const SITE = {
   name: 'Sahim Sakir',
-  domain: 'sahimsakir.dev',
+  domain: 'sahim.dev',
 };
 
 // PLACEHOLDER: create a free account at https://emailjs.com and replace these

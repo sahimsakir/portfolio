@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sahimsakir.dev/sitemap.xml
+Sitemap: https://sahim.dev/sitemap.xml
