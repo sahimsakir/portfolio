@@ -16,7 +16,7 @@ npm run preview
 
 Set `VITE_SITE_URL` to the final public origin before building (defaults to the existing `https://sahim.dev`). The build generates canonical and social metadata, article schema, individual blog HTML files, sitemap and robots.txt. Serve the generated route directories before applying an SPA fallback for unknown routes. Client-side unknown routes show a noindex 404; configure real HTTP 404 responses on your host as appropriate.
 
-The contact form opens the visitor's email app by default. Optional direct delivery requires all three variables: `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY`. Never place private credentials in Vite environment variables.
+The contact form sends through `/api/contact`, a Vercel Function using Resend. Server credentials and activation steps are documented in [docs/contact-email.md](docs/contact-email.md). Live delivery requires the configured Resend sender and API key.
 
 ## Content
 

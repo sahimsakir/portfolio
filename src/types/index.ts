@@ -65,6 +65,7 @@ export interface AchievementStat {
 }
 
 export interface ContactFormData {
+  website?: string;
   name: string;
   email: string;
   subject: string;

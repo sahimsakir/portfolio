@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
-import { EMAILJS_ENABLED } from '@/constants';
 import { personal } from '@/data/resume';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
@@ -15,6 +14,7 @@ type Status = 'idle' | 'sending' | 'success' | 'error';
 
 export function Contact() {
   const [status, setStatus] = useState<Status>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const {
     register,
     handleSubmit,
@@ -23,16 +23,14 @@ export function Contact() {
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
-    if (!EMAILJS_ENABLED) {
-      window.location.href = `mailto:${personal.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`${data.message}\n\nFrom: ${data.name} <${data.email}>`)}`;
-      return;
-    }
+    setErrorMessage('');
     setStatus('sending');
     try {
       await sendContactMessage(data);
       setStatus('success');
       reset();
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'Please try again or email me directly.');
       setStatus('error');
     }
   };
@@ -85,8 +83,12 @@ export function Contact() {
 
           <motion.div variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <Card>
-              <p className="mb-5 text-sm text-ink-dim">{EMAILJS_ENABLED ? 'Send a message directly using this form.' : 'This form opens your email app with a prepared message. You can also copy my email address to contact me directly.'}</p>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+              <p className="mb-5 text-sm text-ink-dim">Send a message directly to my inbox.</p>
+              <form onSubmit={handleSubmit(onSubmit)} aria-busy={status === 'sending'} className="space-y-5" noValidate>
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input id="website" tabIndex={-1} autoComplete="off" {...register('website')} />
+                </div>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="mb-2 block font-mono text-xs text-ink-dim">
@@ -94,7 +96,7 @@ export function Contact() {
                     </label>
                     <input
                       id="name"
-                      {...register('name', { required: 'Name is required' })}
+                      {...register('name', { required: 'Name is required', maxLength: { value: 100, message: 'Use at most 100 characters' }, validate: value => value.trim().length > 0 || 'Name is required' })}
                       className="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-accent-indigo/60"
                       placeholder="Jane Doe"
                     />
@@ -124,7 +126,7 @@ export function Contact() {
                   </label>
                   <input
                     id="subject"
-                    {...register('subject', { required: 'Subject is required' })}
+                    {...register('subject', { required: 'Subject is required', maxLength: { value: 160, message: 'Use at most 160 characters' }, validate: value => value.trim().length > 0 || 'Subject is required' })}
                     className="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-accent-indigo/60"
                     placeholder="Role, project, or collaboration"
                   />
@@ -138,7 +140,7 @@ export function Contact() {
                   <textarea
                     id="message"
                     rows={5}
-                    {...register('message', { required: 'Message is required', minLength: { value: 10, message: 'Message is too short' } })}
+                    {...register('message', { required: 'Message is required', maxLength: { value: 5000, message: 'Use at most 5000 characters' }, minLength: { value: 10, message: 'Message is too short' } })}
                     className="w-full resize-none rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-accent-indigo/60"
                     placeholder="Tell me a bit about what you're building..."
                   />
@@ -157,19 +159,19 @@ export function Contact() {
                     </>
                   ) : (
                     <>
-                      <Send size={16} /> {EMAILJS_ENABLED ? 'Send message' : 'Open email app'}
+                      <Send size={16} /> Send message
                     </>
                   )}
                 </button>
 
                 {status === 'success' && (
-                  <p className="flex items-center gap-2 text-sm text-accent-cyan">
-                    <CheckCircle2 size={16} /> Message sent — I'll reply soon.
+                  <p role="status" className="flex items-center gap-2 text-sm text-accent-cyan">
+                    <CheckCircle2 size={16} /> Message submitted — I'll reply soon.
                   </p>
                 )}
                 {status === 'error' && (
-                  <p className="flex items-center gap-2 text-sm text-red-400">
-                    <AlertCircle size={16} /> Your message could not be sent. Please email me directly using the address alongside this form.
+                  <p role="alert" className="flex items-center gap-2 text-sm text-red-400">
+                    <AlertCircle size={16} /> {errorMessage}
                   </p>
                 )}
               </form>
