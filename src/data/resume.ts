@@ -27,7 +27,7 @@ export const personal = {
   photo: profilePhoto,
   isPlaceholderPhoto: false,
   summary:
-    'I build backend services and business applications with PHP and Laravel, and help deliver them with AWS, Docker and Terraform. Since 2021, my work has spanned product catalogs, e-commerce, interactive web experiences and advertising technology. At AdPlay, I worked on real-time bidding, campaign management and MongoDB-to-SQL Server reporting integrations. At JB Connect, I work across application delivery, APIs, testing and cloud deployment. I care about clear data models, efficient queries and systems that teams can maintain.',
+    'I bring 6+ years of experience building backend services and business applications with PHP and Laravel, and help deliver them with AWS, Docker and Terraform. Since 2021, my work has spanned product catalogs, e-commerce, interactive web experiences and advertising technology. At AdPlay, I worked on real-time bidding, campaign management and MongoDB-to-SQL Server reporting integrations. At JB Connect, I work across application delivery, APIs, testing and cloud deployment. I care about clear data models, efficient queries and systems that teams can maintain.',
   resumeUrl: '/resume.pdf',
 };
 
@@ -239,7 +239,7 @@ export const certifications: CertificationItem[] = [
 ];
 
 export const achievements: AchievementStat[] = [
-  { label: 'Years of Experience', value: 5, suffix: '+' },
+  { label: 'Years of Experience', value: 6, suffix: '+' },
   { label: 'Featured Projects', value: 4 },
   { label: 'Companies Worked', value: 4 },
   { label: 'Core Technologies', value: 20, suffix: '+' },
@@ -273,7 +273,7 @@ export const projects: ProjectItem[] = [
     "id": "rtb",
     "title": "Real-Time Bidding & Campaign Management",
     "description": "Backend engineering for an advertising platform: PHP bidding services, a Laravel CMS, audience targeting and reporting integrations.",
-    "screenshot": "/images/rtb.webp",
+    "screenshot": "/images/project-ui-rtb.webp",
     "isPlaceholderScreenshot": false,
     "technologies": [
       "PHP",
@@ -299,7 +299,7 @@ export const projects: ProjectItem[] = [
     "id": "sync",
     "title": "Advertising Data Sync Pipeline",
     "description": "A scheduled data pipeline moving advertising records from MongoDB into SQL Server for reporting.",
-    "screenshot": "/images/sync.webp",
+    "screenshot": "/images/project-ui-sync.webp",
     "isPlaceholderScreenshot": false,
     "technologies": [
       "PHP",
@@ -323,7 +323,7 @@ export const projects: ProjectItem[] = [
     "id": "catalog",
     "title": "Product Catalog & Commerce Websites",
     "description": "Laravel websites and commerce features built during my work at Banglamark, including product catalogs, tender pages and storefront administration.",
-    "screenshot": "/images/catalog.webp",
+    "screenshot": "/images/project-ui-catalog.webp",
     "isPlaceholderScreenshot": false,
     "technologies": [
       "Laravel",
@@ -348,7 +348,7 @@ export const projects: ProjectItem[] = [
     "id": "cloud",
     "title": "AWS Deployment Infrastructure",
     "description": "Infrastructure and delivery configuration for a Laravel development API using Terraform and AWS deployment services.",
-    "screenshot": "/images/cloud.webp",
+    "screenshot": "/images/project-ui-cloud.webp",
     "isPlaceholderScreenshot": false,
     "technologies": [
       "Terraform",

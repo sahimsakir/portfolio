@@ -42,7 +42,7 @@ function RotatingTitle() {
 
 export function Hero() {
   const mouse = useMousePosition();
-  const years = achievements.find((a) => a.label.includes('Years'))?.value ?? 5;
+  const years = achievements.find((a) => a.label.includes('Years'))?.value ?? 6;
   const projects = achievements.find((a) => a.label.includes('Projects'))?.value ?? 10;
 
   return (

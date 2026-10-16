@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     generateBundle(_options, bundle) {
       const index = bundle['index.html'];
       if (!index || index.type !== 'asset') return;
-      const routes = [{ path: '/', title: 'Sahim Sakir — Senior Software Engineer', description: 'Laravel, PHP, AWS and Docker engineering by Sahim Sakir in Dhaka, Bangladesh.', image: '/images/cloud.webp', post: undefined }, { path: '/blog', title: 'Backend & Cloud Engineering Blog — Sahim Sakir', description: 'Practical engineering notes on Laravel performance, AWS delivery and database synchronization.', image: '/images/cloud.webp', post: undefined }, ...blogPosts.map(post => ({ path: `/blog/${post.slug}`, title: `${post.title} — Sahim Sakir`, description: post.excerpt, image: post.coverImage, post }))];
+      const routes = [{ path: '/', title: 'Sahim Sakir — Senior Software Engineer', description: 'Sahim Sakir: Senior Software Engineer with 6+ years of experience in Laravel, PHP, AWS and Docker. Based in Dhaka, Bangladesh.', image: '/images/cloud.webp', post: undefined }, { path: '/blog', title: 'Backend & Cloud Engineering Blog — Sahim Sakir', description: 'Practical engineering notes on Laravel performance, AWS delivery and database synchronization.', image: '/images/cloud.webp', post: undefined }, ...blogPosts.map(post => ({ path: `/blog/${post.slug}`, title: `${post.title} — Sahim Sakir`, description: post.excerpt, image: post.coverImage, post }))];
       const template = String(index.source);
       for (const route of routes) {
         let html = template.replaceAll('https://sahim.dev', origin).replace(/<title>.*?<\/title>/s, `<title>${escape(route.title)}</title>`)

@@ -48,7 +48,7 @@ export function Home() {
     <>
       <SEO
         title="Sahim Sakir — Senior Software Engineer"
-        description="Portfolio of Sahim Sakir, a Senior Software Engineer specializing in Laravel, PHP, AWS, Docker and scalable backend architecture."
+        description="Portfolio of Sahim Sakir, a Senior Software Engineer with 6+ years of experience specializing in Laravel, PHP, AWS, Docker and scalable backend architecture."
       />
       <Hero />
       <About />
