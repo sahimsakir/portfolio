@@ -50,3 +50,7 @@ Generated using the built-in imagegen tool. Each prompt requested a wide 16:9, m
 The corresponding `-640.webp` files provide smaller card images. Complete generation prompts are preserved in `docs/image-prompts.md`.
 
 Project UI prompts are documented in `docs/project-ui-prompts.md`. The experience count is maintained in `src/data/resume.ts` and displayed consistently as 6+ years.
+
+### Project UI design directions
+
+Each project preview uses its own visual system: violet/coral RTB analytics with an icon rail, amber terminal-style data operations with top navigation, an ivory/terracotta editorial storefront without a sidebar, and a mint/forest release workspace with a grouped sidebar.
