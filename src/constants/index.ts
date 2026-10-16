@@ -12,13 +12,3 @@ export const SITE = {
   name: 'Sahim Sakir',
   domain: 'sahim.dev',
 };
-
-// PLACEHOLDER: create a free account at https://emailjs.com and replace these
-// with your real Service ID, Template ID and Public Key to enable the contact form.
-export const EMAILJS_CONFIG = {
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
-};
-
-export const EMAILJS_ENABLED = Object.values(EMAILJS_CONFIG).every(Boolean);
