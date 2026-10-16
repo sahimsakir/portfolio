@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
 import { getBlogPostBySlug, blogPosts } from '@/data/blog';
+import { NotFound } from './NotFound';
 import { SEO } from '@/components/common/SEO';
 import { Badge } from '@/components/ui/Badge';
 import { fadeUp, viewportOnce } from '@/animations/variants';
@@ -85,7 +86,7 @@ export function BlogPostPage() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  if (!post) return <Navigate to="/blog" replace />;
+  if (!post) return <NotFound />;
 
   const postIndex = blogPosts.findIndex((p) => p.slug === post.slug);
   const prevPost = postIndex > 0 ? blogPosts[postIndex - 1] : null;
@@ -94,9 +95,9 @@ export function BlogPostPage() {
   return (
     <>
       <ReadProgress />
-      <SEO title={`${post.title} — Sahim Sakir`} description={post.excerpt} />
+      <SEO title={`${post.title} — Sahim Sakir`} description={post.excerpt} image={post.coverImage} article={post} />
 
-      <div className="relative h-[45vh] w-full overflow-hidden pt-16 sm:h-[52vh]">
+      <div className="relative min-h-[430px] h-[55vh] w-full overflow-hidden pt-16 sm:h-[60vh]">
         <img src={post.coverImage} alt={post.title} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/60 to-transparent" />
 
@@ -153,19 +154,14 @@ export function BlogPostPage() {
         </motion.div>
 
         <article ref={articleRef} className="space-y-6">
-          {post.content.map((paragraph, i) => (
-            <motion.p
-              key={i}
-              variants={fadeUp}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              className="text-base leading-[1.85] text-ink-dim"
-            >
-              {paragraph}
-            </motion.p>
-          ))}
+          <p className="text-sm text-ink-dim">By Sahim Sakir · Engineering notes</p>
+          {post.content.map((paragraph, i) => paragraph.startsWith('## ') ? (
+            <h2 key={i} className="pt-5 font-display text-2xl font-semibold text-ink">{paragraph.slice(3)}</h2>
+          ) : <p key={i} className="text-base leading-[1.85] text-ink-dim">{paragraph}</p>)}
+          <aside className="glass-card p-5">
+            <h2 className="font-semibold text-ink">Further reading</h2>
+            <ul className="mt-3 space-y-3">{post.references?.map(reference => <li key={reference.url}><a className="text-sm text-accent-indigo underline" href={reference.url} target="_blank" rel="noreferrer">{reference.title}</a></li>)}</ul>
+          </aside>
         </article>
 
         <motion.div

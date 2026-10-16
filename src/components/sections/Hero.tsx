@@ -23,7 +23,7 @@ function RotatingTitle() {
   }, []);
 
   return (
-    <span className="relative inline-block h-[1.4em] overflow-hidden align-bottom">
+    <span className="relative inline-block min-h-[1.4em] align-bottom">
       <AnimatePresence mode="wait">
         <motion.span
           key={rotatingTitles[index]}
@@ -165,15 +165,15 @@ export function Hero() {
             </div>
 
             <div className="space-y-5 p-6">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-4">
                 <span className="font-mono text-xs text-ink-faint">role</span>
                 <span className="text-sm text-ink">{personal.title}</span>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-4">
                 <span className="font-mono text-xs text-ink-faint">focus</span>
                 <span className="text-sm text-ink">Laravel · AWS · Docker</span>
               </div>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-4">
                 <span className="font-mono text-xs text-ink-faint">location</span>
                 <span className="text-sm text-ink">{personal.location}</span>
               </div>
@@ -190,9 +190,9 @@ export function Hero() {
                   </p>
                 </div>
                 <div>
-                  <p className="font-display text-xl font-semibold text-ink">99.9%</p>
+                  <p className="font-display text-xl font-semibold text-ink">4</p>
                   <p className="mt-0.5 font-mono text-[10px] uppercase tracking-wide text-ink-faint">
-                    uptime
+                    companies
                   </p>
                 </div>
               </div>

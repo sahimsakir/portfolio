@@ -1,75 +1,49 @@
 # Sahim Sakir — Portfolio
 
-A premium, dark-themed portfolio built with React 19, TypeScript, Vite, Tailwind CSS and Framer Motion.
+React 19, TypeScript, Vite, Tailwind CSS and Framer Motion portfolio with selected project contributions and an engineering blog.
 
-## Getting started
+## Development
 
-```bash
-npm install
+```sh
+npm ci
 npm run dev
-```
-
-Build for production:
-
-```bash
 npm run build
+npm run lint
 npm run preview
 ```
 
-## ⚠️ Placeholders to replace before launch
+## Configuration
 
-This site was generated from a resume that didn't include a dedicated **Projects** section,
-photos, logos, or several other assets. Everything below is a placeholder — search the
-codebase for `PLACEHOLDER` and `isPlaceholder` to find every instance.
+Set `VITE_SITE_URL` to the final public origin before building (defaults to the existing `https://sahim.dev`). The build generates canonical and social metadata, article schema, individual blog HTML files, sitemap and robots.txt. Serve the generated route directories before applying an SPA fallback for unknown routes. Client-side unknown routes show a noindex 404; configure real HTTP 404 responses on your host as appropriate.
 
-| Asset | Location | Notes |
-|---|---|---|
-| Profile photo | `src/assets/images/profile-placeholder.svg` → replace with `profile-photo.jpg` | Update `personal.photo` in `src/data/resume.ts` |
-| Projects (4) | `src/data/resume.ts` → `projects` array | Titles, descriptions, tech, GitHub/demo links, screenshots are placeholders |
-| Project screenshots | `src/assets/images/project-*-placeholder.svg` | Replace with real screenshots |
-| Company logos (4) | `src/assets/images/logo-*-placeholder.svg` | JB Connect, AdPlay, Nvisio, Banglamark |
-| Achievement stats | `src/data/resume.ts` → `achievements` | Estimated from resume timeline — verify real numbers |
-| Certification issuers | `src/data/resume.ts` → `certifications` | A few issuing bodies weren't listed on the resume |
-| EmailJS credentials | `src/constants/index.ts` → `EMAILJS_CONFIG` | Create a free account at emailjs.com |
-| Domain / OG URL | `index.html`, `public/sitemap.xml`, `public/robots.txt` | Currently set to `sahim.dev` |
-| Favicon / OG cover | `public/favicon.svg`, `public/og-cover.svg` | Simple generated marks — swap for real branding if desired |
+The contact form opens the visitor's email app by default. Optional direct delivery requires all three variables: `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY`. Never place private credentials in Vite environment variables.
 
-## Tech stack
+## Content
 
-React 19 · TypeScript · Vite · Tailwind CSS · Framer Motion · React Router · React Hook Form ·
-EmailJS · Lucide Icons · React Icons (brand marks) · General Sans + JetBrains Mono
+- `src/data/resume.ts`: biography, career, education, skills and project case studies.
+- `src/data/blog.ts`: articles, ISO publication dates, tags and official reference links.
+- `public/images/`: generated concept artwork in 1280px and 640px WebP versions. These are illustrations, not screenshots of employer systems. Private projects intentionally have no invented demo or repository links.
+- `public/resume.pdf`: existing downloadable resume, retained as provided. Review its contents independently before publishing.
 
-## Project structure
+New blog entries automatically receive build-time HTML metadata and sitemap entries. The article body includes a no-JavaScript fallback; the interactive application still renders on the client.
 
-```
-src/
- ├── assets/        static images (currently placeholders)
- ├── components/
- │   ├── common/    Loader, SEO, ScrollToTop, ErrorBoundary, etc.
- │   ├── layout/    Header, Footer, Layout
- │   ├── sections/  Hero, About, Skills, Experience, Projects, etc.
- │   └── ui/        Button, Card, Badge, SectionHeading
- ├── pages/         Home, NotFound
- ├── hooks/         useScrollProgress, useMousePosition, useActiveSection
- ├── context/       ThemeContext (dark/light)
- ├── animations/    Framer Motion variants
- ├── data/          resume.ts — single source of truth for all content
- ├── constants/     nav links, EmailJS config
- ├── services/      emailService.ts
- └── types/         shared TypeScript interfaces
+## Browser checks
+
+```sh
+npx playwright install chromium
+npm run dev -- --host 127.0.0.1
+node scripts/check-ui.mjs
 ```
 
-## Design notes
+The browser script checks home, blog and article layouts at 320, 390, 768, 1024 and 1440px; image loading; featured article search; and Escape dismissal for project dialogs. Run it against the local development server.
 
-Redesigned around Linear / Raycast / Vercel-style product aesthetics: near-black canvas
-(`#0A0A0C`), an indigo → cyan gradient accent (`#6366F1` → `#22D3EE`), refined glassmorphism
-cards with a subtle hover-lift, and General Sans (display/body) paired with JetBrains Mono
-(labels, code, technical values). A light mode toggle is available in the header.
+## Artwork provenance
 
-Signature motifs:
-- **kbd-style section labels** — small pulsing dot + tracked uppercase text, replacing generic section headers
-- **Percentage-based skills dashboard** — animated circular rings for featured skills, animated linear bars for the full category breakdown
-- **Engineer-themed preloader** — a simulated build pipeline (`git commit` → `npm install` → compile → test → deploy → ✓) instead of a generic spinner
-- **Rotating hero titles** + floating tech-stack icons + a live "status card" mockup in place of a literal terminal window
-- Ripple micro-interaction on primary buttons, hover-lift on every card, image zoom on project thumbnails
+Generated using the built-in imagegen tool. Each prompt requested a wide 16:9, mobile-crop-safe editorial 3D illustration, dark navy with indigo/cyan light, no text or logos:
 
+- `public/images/rtb.webp`: advertising exchange with luminous signals, glass servers and campaign panels.
+- `public/images/sync.webp`: three database towers connected by light ribbons.
+- `public/images/catalog.webp`: unbranded product tiles and a central browser-like frame.
+- `public/images/cloud.webp`: sculptural cloud over server modules and a deployment path.
+
+The corresponding `-640.webp` files provide smaller card images. Complete generation prompts are preserved in `docs/image-prompts.md`.

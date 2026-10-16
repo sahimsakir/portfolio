@@ -144,3 +144,20 @@ html.light .text-ink {
 html.light .text-ink-dim {
   color: #52525b !important;
 }
+
+/* Shared responsive safeguards and accessible theme surfaces. */
+html { scroll-padding-top: 80px; }
+body { min-width: 320px; }
+img { max-width: 100%; }
+.container-shell { min-width: 0; }
+.container-shell > *, .grid > *, .flex > * { min-width: 0; }
+p, h1, h2, h3, h4, a { overflow-wrap: anywhere; }
+html.light .text-ink-faint { color: #656571 !important; }
+html.light .bg-surface-elevated { background: #eeeef4; }
+html.light [class*="border-white/"] { border-color: rgba(20,20,35,.14); }
+html.light [class*="bg-white/"] { background-color: rgba(20,20,35,.025); }
+html.light .text-accent-indigo-soft { color: #4f46b8; }
+@media (max-width: 639px) {
+  .container-shell { padding-left: 1.25rem; padding-right: 1.25rem; }
+  section.py-28 { padding-top: 4rem; padding-bottom: 4rem; }
+}

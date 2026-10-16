@@ -131,7 +131,7 @@ export function Header() {
         {/* Desktop nav */}
         <nav
           ref={navRef}
-          className="relative hidden items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.02] p-1 md:flex"
+          className="relative hidden items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.02] p-1 xl:flex"
         >
           {/* Single always-mounted sliding pill — positioned with left/width via
               inline style so it never has a wrong initial x value */}
@@ -187,9 +187,9 @@ export function Header() {
           </a>
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink xl:hidden"
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Toggle menu"
+            aria-label="Toggle menu" aria-expanded={menuOpen} aria-controls="mobile-navigation"
           >
             {menuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -200,12 +200,12 @@ export function Header() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            key="mobile-menu"
+            id="mobile-navigation" key="mobile-menu"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.22, ease: 'easeInOut' }}
-            className="overflow-hidden border-b border-white/[0.06] bg-canvas/95 backdrop-blur-lg md:hidden"
+            className="overflow-hidden border-b border-white/[0.06] bg-canvas/95 backdrop-blur-lg xl:hidden"
           >
             <div className="container-shell flex flex-col gap-1 py-4">
               {NAV_LINKS.map((link) => {

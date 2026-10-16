@@ -23,7 +23,7 @@ function FeaturedPost() {
           <div className="relative grid lg:grid-cols-[1.2fr_0.8fr]">
             <div className="relative overflow-hidden">
               <img
-                src={post.coverImage}
+                src={post.coverImage} loading="lazy" decoding="async" width={1280} height={720} srcSet={`${post.coverImage.replace('.webp', '-640.webp')} 640w, ${post.coverImage} 1280w`} sizes="(max-width: 767px) 100vw, 50vw"
                 alt={post.title}
                 className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105 lg:aspect-auto lg:h-full"
               />
@@ -48,7 +48,7 @@ function FeaturedPost() {
                 {post.tags.map((t) => <Badge key={t}>{t}</Badge>)}
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-4 font-mono text-xs text-ink-faint">
                   <span className="flex items-center gap-1.5"><Calendar size={11} />{post.date}</span>
                   <span className="flex items-center gap-1.5"><Clock size={11} />{post.readTime}</span>
@@ -74,7 +74,7 @@ function PostCard({ post, index }: { post: (typeof blogPosts)[0]; index: number 
 
           <div className="relative overflow-hidden">
             <img
-              src={post.coverImage}
+              src={post.coverImage} loading="lazy" decoding="async" width={1280} height={720} srcSet={`${post.coverImage.replace('.webp', '-640.webp')} 640w, ${post.coverImage} 1280w`} sizes="(max-width: 767px) 100vw, 50vw"
               alt={post.title}
               className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -159,7 +159,7 @@ export function Blog() {
 
   useEffect(() => { setPage(1); }, [search, activeTag]);
 
-  const rest = blogPosts.slice(1);
+  const rest = blogPosts;
   const filtered = useMemo(() => rest.filter((p) => {
     const matchTag = activeTag === 'All' || p.tags.includes(activeTag);
     const q = search.toLowerCase();
@@ -239,7 +239,7 @@ export function Blog() {
       <section className="relative pb-32 pt-8">
         <div className="container-shell space-y-14">
 
-          <FeaturedPost />
+          {!hasFilters && <FeaturedPost />}
 
           <motion.div
             variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}
@@ -260,12 +260,12 @@ export function Blog() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search posts…"
+                aria-label="Search posts" placeholder="Search posts…"
                 className="w-full rounded-full border border-white/10 bg-white/[0.03] py-2.5 pl-9 pr-9 font-mono text-sm text-ink placeholder:text-ink-faint outline-none transition-colors focus:border-accent-indigo/50"
               />
               {search && (
                 <button
-                  onClick={() => setSearch('')}
+                  onClick={() => setSearch('')} aria-label="Clear search"
                   className="absolute right-3.5 top-1/2 -translate-y-1/2 text-ink-faint hover:text-ink"
                 >
                   <X size={13} />
@@ -365,8 +365,7 @@ export function Blog() {
                 More posts coming soon
               </h3>
               <p className="mx-auto mt-3 max-w-md text-sm text-ink-dim">
-                Working on detailed write-ups of production engineering experiences.
-                Add your real articles in <code className="font-mono text-xs text-accent-indigo">src/data/blog.ts</code>.
+                Have a question about backend architecture, delivery pipelines or data integration? Let’s talk about the engineering behind your next project.
               </p>
               <Link
                 to="/#contact"

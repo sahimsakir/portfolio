@@ -8,21 +8,12 @@ import type {
   AchievementStat,
 } from '@/types';
 
-import profilePlaceholder from '@/assets/images/profile.jpeg';
+import profilePhoto from '@/assets/images/profile.jpeg';
 import logoJbConnect from '@/assets/images/jbc-favicon.jpg';
 import logoAdplay from '@/assets/images/adplay_mobile_logo.jpeg';
 import logoNvisio from '@/assets/images/nvisio_solutions_logo.jpeg';
 import logoBanglamark from '@/assets/images/banglamark.jpg';
-import project1Placeholder from '@/assets/images/project-porfolio-1.png';
-import project2Placeholder from '@/assets/images/project-2-placeholder.svg';
-import project3Placeholder from '@/assets/images/project-3-placeholder.svg';
-import project4Placeholder from '@/assets/images/project-4-placeholder.svg';
 
-/**
- * ⚠️ PLACEHOLDER NOTICE
- * Fields marked "PLACEHOLDER" below are not present on the source resume
- * and must be replaced with real content before shipping this site.
- */
 
 export const personal = {
   name: 'Sahim Sakir',
@@ -30,14 +21,13 @@ export const personal = {
   title: 'Senior Software Engineer',
   headline: 'Backend & Cloud Engineer building scalable Laravel systems on AWS',
   location: 'Dhaka, Bangladesh',
-  address: 'Flat: 1A, House: 1/E, Road: 11, Block: G, Bashundhara R/A, Dhaka-1229',
+  address: 'Dhaka, Bangladesh',
   email: 'sahimsakir@gmail.com',
   phone: '01516117503',
-  // PLACEHOLDER: replace with real headshot at src/assets/images/profile-photo.jpg
-  photo: profilePlaceholder,
-  isPlaceholderPhoto: true,
+  photo: profilePhoto,
+  isPlaceholderPhoto: false,
   summary:
-    'I am a dedicated Software Engineer specializing in Laravel and PHP, with expertise in MySQL, MongoDB, AWS, and Docker. I focus on building scalable, high-performance applications while ensuring efficient backend architecture, security, and server management. Proficient in HTML, CSS, and JavaScript, I create seamless user experiences. My skills in cloud deployment and DevOps enhance system efficiency and reliability. Passionate about problem-solving and continuous learning, I thrive on developing innovative, user-friendly solutions.',
+    'I build backend services and business applications with PHP and Laravel, and help deliver them with AWS, Docker and Terraform. Since 2021, my work has spanned product catalogs, e-commerce, interactive web experiences and advertising technology. At AdPlay, I worked on real-time bidding, campaign management and MongoDB-to-SQL Server reporting integrations. At JB Connect, I work across application delivery, APIs, testing and cloud deployment. I care about clear data models, efficient queries and systems that teams can maintain.',
   resumeUrl: '/resume.pdf',
 };
 
@@ -140,18 +130,12 @@ export const experience: ExperienceItem[] = [
   {
     id: 'jbconnect',
     company: 'JB Connect Ltd.',
-    // PLACEHOLDER: replace with real logo at src/assets/images/logo-jbconnect.svg
+    isPlaceholderLogo: false,
     logo: logoJbConnect,
-    isPlaceholderLogo: true,
     position: 'Senior Lead Software Engineer',
     duration: '06/2024 — Present',
     location: 'Dhaka, Bangladesh',
-    summary: [
-      'Designed and enhanced system architectures for 10+ large-scale projects, improving scalability and maintainability.',
-      'Drove Laravel, AWS, Docker and CI/CD adoption, resulting in 30% faster deployment cycles.',
-      'Owned cloud infrastructure across EC2, ECS, S3, RDS, SQS, Lambda and CloudWatch.',
-      'Directed DevOps tooling strategy using Docker, AWS CDK and Terraform.',
-    ],
+    summary: ['Develop and maintain business applications with Laravel, PHP, JavaScript and relational databases.', 'Work across backend features, frontend integration, testing and issue resolution in a Scrum delivery process.', 'Configure AWS deployment workflows with Docker, Terraform, CodePipeline, CodeDeploy and CloudWatch.', 'Build APIs and support reliable releases through full-flow testing and infrastructure maintenance.'],
     technologies: [
       'Laravel',
       'PHP',
@@ -169,37 +153,23 @@ export const experience: ExperienceItem[] = [
   {
     id: 'adplay',
     company: 'AdPlay Technology Ltd.',
+    isPlaceholderLogo: false,
     logo: logoAdplay,
-    isPlaceholderLogo: true,
     position: 'Software Engineer',
     duration: '09/2023 — 05/2024',
     location: 'Dhaka, Bangladesh',
-    summary: [
-      'Built and maintained high-performance backend services using Laravel (8–10) and PHP 7–8 for high-traffic ad-tech platforms.',
-      'Designed and optimized RESTful APIs handling millions of ad requests with low latency.',
-      'Refactored legacy codebases, reducing technical debt by 30%.',
-      'Optimized MySQL and MongoDB queries and indexes, improving data retrieval speed by 40%.',
-      'Integrated third-party ad and real-time bidding (RTB) APIs, improving targeting and fill rates.',
-      'Tuned Apache/Nginx and PHP-FPM configurations, cutting response times by 35% and sustaining 99.9% uptime.',
-    ],
+    summary: ['Built and maintained PHP real-time bidding services and a Laravel campaign management system.', 'Integrated Google Authorized Buyers, MaxMind GeoIP2 and WURFL for bidding and audience context.', 'Worked on audience targeting, remarketing and frequency-capping logic.', 'Synchronized MongoDB advertising data into SQL Server for reporting using scheduled jobs.', 'Tuned Apache and PHP runtime settings and supported AWS-hosted services.'],
     technologies: ['Laravel', 'PHP', 'MySQL', 'MongoDB', 'AWS', 'Apache', 'Nginx', 'JavaScript', 'Bootstrap'],
   },
   {
     id: 'nvisio',
     company: 'NVISIO Solution Ltd.',
+    isPlaceholderLogo: false,
     logo: logoNvisio,
-    isPlaceholderLogo: true,
     position: 'Full Stack Developer',
     duration: '02/2022 — 08/2023',
     location: 'Dhaka, Bangladesh',
-    summary: [
-      'Built scalable Laravel (5–10) / PHP (5–8) applications serving 100K+ daily users.',
-      'Implemented 50+ stored procedures across MongoDB, MySQL and SQL Server to optimize data processing.',
-      'Automated database jobs, cutting manual intervention by 40%.',
-      'Delivered 100% mobile-responsive UIs with HTML, CSS, JavaScript and Bootstrap.',
-      'Expanded a multi-database report-syncing application, reducing sync time by 40%.',
-      'Improved server configurations, boosting site speed by 50% and cutting crashes by 30%.',
-    ],
+    summary: ['Delivered corporate websites, product viewers and application features using Laravel, MySQL and JavaScript.', 'Built interactive 3D package viewers with three.js and explored browser-based AR with WebXR.', 'Maintained SIG Micro and Ayojok.com features, resolved defects and refined responsive layouts.', 'Managed hosting and releases on Bluehost and Hostinger.'],
     technologies: [
       'Laravel',
       'PHP',
@@ -215,103 +185,28 @@ export const experience: ExperienceItem[] = [
   {
     id: 'banglamark',
     company: 'Banglamark Group Ltd.',
+    isPlaceholderLogo: false,
     logo: logoBanglamark,
-    isPlaceholderLogo: true,
     position: 'Development & Project Engineer',
     duration: '02/2021 — 02/2022',
     location: 'Dhaka, Bangladesh',
-    summary: [
-      'Enhanced catalogue-based company and product websites with Laravel, improving engagement by 20%.',
-      'Grew a coupon and deals platform, increasing daily transactions by 35%.',
-      'Managed the admin panel and front end for an e-commerce platform with 500K+ products.',
-      'Built tender-request sites for multiple business units, cutting processing time by 50%.',
-    ],
+    summary: ['Built and maintained Laravel product-catalog websites for Banglamark and Liugong Bangladesh.', 'Developed tender landing pages for business units and worked on the Flokoin homepage.', 'Maintained Kablewala e-commerce administration and storefront features.', 'Implemented responsive pages with HTML, CSS, JavaScript and Bootstrap.'],
     technologies: ['Laravel', 'HTML', 'CSS', 'JavaScript', 'Bootstrap'],
   },
 ];
 
-// PLACEHOLDER: entire projects array — no dedicated project section existed on the
-// source resume. Replace title/description/links/screenshot for each entry below.
-export const projects: ProjectItem[] = [
-  {
-    id: 'project-1',
-    title: 'PLACEHOLDER — Ad Analytics Platform',
-    description:
-      'PLACEHOLDER — A high-throughput ad analytics dashboard processing real-time bidding data with automated reporting pipelines. Replace with your real project description.',
-    screenshot: project1Placeholder,
-    isPlaceholderScreenshot: true,
-    technologies: ['Laravel', 'MySQL', 'MongoDB', 'AWS', 'Redis'],
-    github: null,
-    demo: null,
-    challenges: 'PLACEHOLDER — describe the hardest technical problem you solved.',
-    solution: 'PLACEHOLDER — describe your approach and why it worked.',
-    architecture: 'PLACEHOLDER — describe the system architecture (services, queues, DB layout).',
-    features: ['PLACEHOLDER feature one', 'PLACEHOLDER feature two', 'PLACEHOLDER feature three'],
-    featured: true,
-  },
-  {
-    id: 'project-2',
-    title: 'PLACEHOLDER — Multi-Region Report Sync Engine',
-    description:
-      'PLACEHOLDER — A syncing service unifying MongoDB, MySQL and SQL Server data sources for consistent cross-region reporting. Replace with your real project description.',
-    screenshot: project2Placeholder,
-    isPlaceholderScreenshot: true,
-    technologies: ['Laravel', 'AWS', 'MongoDB', 'MySQL', 'SQL Server'],
-    github: null,
-    demo: null,
-    challenges: 'PLACEHOLDER — describe the hardest technical problem you solved.',
-    solution: 'PLACEHOLDER — describe your approach and why it worked.',
-    architecture: 'PLACEHOLDER — describe the system architecture.',
-    features: ['PLACEHOLDER feature one', 'PLACEHOLDER feature two', 'PLACEHOLDER feature three'],
-    featured: true,
-  },
-  {
-    id: 'project-3',
-    title: 'PLACEHOLDER — E-Commerce Catalogue Admin',
-    description:
-      'PLACEHOLDER — An admin panel and storefront handling 500K+ products with inventory and tender workflows. Replace with your real project description.',
-    screenshot: project3Placeholder,
-    isPlaceholderScreenshot: true,
-    technologies: ['Laravel', 'JavaScript', 'Bootstrap', 'MySQL'],
-    github: null,
-    demo: null,
-    challenges: 'PLACEHOLDER — describe the hardest technical problem you solved.',
-    solution: 'PLACEHOLDER — describe your approach and why it worked.',
-    architecture: 'PLACEHOLDER — describe the system architecture.',
-    features: ['PLACEHOLDER feature one', 'PLACEHOLDER feature two', 'PLACEHOLDER feature three'],
-    featured: false,
-  },
-  {
-    id: 'project-4',
-    title: 'PLACEHOLDER — Infrastructure-as-Code Toolkit',
-    description:
-      'PLACEHOLDER — A Terraform + AWS CDK toolkit standardizing deployments across environments, cutting release time by 30%. Replace with your real project description.',
-    screenshot: project4Placeholder,
-    isPlaceholderScreenshot: true,
-    technologies: ['Terraform', 'AWS CDK', 'Docker', 'CI/CD'],
-    github: null,
-    demo: null,
-    challenges: 'PLACEHOLDER — describe the hardest technical problem you solved.',
-    solution: 'PLACEHOLDER — describe your approach and why it worked.',
-    architecture: 'PLACEHOLDER — describe the system architecture.',
-    features: ['PLACEHOLDER feature one', 'PLACEHOLDER feature two', 'PLACEHOLDER feature three'],
-    featured: false,
-  },
-];
 
 export const education: EducationItem[] = [
   {
     id: 'aiub',
     institution: 'American International University-Bangladesh',
     degree: 'Bachelor of Science in Computer Science & Engineering',
-    duration: '01/2017 — 06/2020',
+    duration: '01/2017 — 07/2020 · CGPA 3.75/4.00',
     location: 'Dhaka, Bangladesh',
   },
 ];
 
 export const certifications: CertificationItem[] = [
-  { id: 'cert-1', title: 'Certified DevOps Engineering', issuer: 'PLACEHOLDER — issuing body' },
-  { id: 'cert-2', title: 'The Ideas Challenge', issuer: 'PLACEHOLDER — issuing body', year: '2018' },
   { id: 'cert-3', title: 'Hult Prize', issuer: 'American International University-Bangladesh', year: '2018' },
   {
     id: 'cert-4',
@@ -341,13 +236,11 @@ export const certifications: CertificationItem[] = [
     year: '2007',
     location: 'Chattogram, Bangladesh',
   },
-  { id: 'cert-8', title: 'Cyber Crime Awareness Program', issuer: 'PLACEHOLDER — issuing body' },
 ];
 
-// PLACEHOLDER: verify these figures — derived estimates from resume timeline, not stated explicitly.
 export const achievements: AchievementStat[] = [
-  { label: 'Years of Experience', value: 6, suffix: '+' },
-  { label: 'Large-Scale Projects', value: 20, suffix: '+' },
+  { label: 'Years of Experience', value: 5, suffix: '+' },
+  { label: 'Featured Projects', value: 4 },
   { label: 'Companies Worked', value: 4 },
   { label: 'Core Technologies', value: 20, suffix: '+' },
 ];
@@ -373,4 +266,107 @@ export const techStack: string[] = [
   'FastAPI',
   'Ubuntu',
   'CentOS',
+];
+
+export const projects: ProjectItem[] = [
+  {
+    "id": "rtb",
+    "title": "Real-Time Bidding & Campaign Management",
+    "description": "Backend engineering for an advertising platform: PHP bidding services, a Laravel CMS, audience targeting and reporting integrations.",
+    "screenshot": "/images/rtb.webp",
+    "isPlaceholderScreenshot": false,
+    "technologies": [
+      "PHP",
+      "Laravel",
+      "MongoDB",
+      "SQL Server",
+      "AWS"
+    ],
+    "github": null,
+    "demo": null,
+    "challenges": "Responding to bid requests while keeping campaign rules, audience context and reporting consistent.",
+    "solution": "Integrated bidding and targeting logic with campaign configuration, geolocation and device intelligence.",
+    "architecture": "PHP bidder and Laravel CMS, with MongoDB data synchronized to SQL Server through scheduled jobs.",
+    "features": [
+      "OpenRTB response handling",
+      "Audience targeting and frequency capping",
+      "Google Authorized Buyers integration",
+      "Campaign administration and reporting"
+    ],
+    "featured": true
+  },
+  {
+    "id": "sync",
+    "title": "Advertising Data Sync Pipeline",
+    "description": "A scheduled data pipeline moving advertising records from MongoDB into SQL Server for reporting.",
+    "screenshot": "/images/sync.webp",
+    "isPlaceholderScreenshot": false,
+    "technologies": [
+      "PHP",
+      "MongoDB",
+      "SQL Server",
+      "AWS"
+    ],
+    "github": null,
+    "demo": null,
+    "challenges": "Reconciling document-oriented source data with relational reporting structures.",
+    "solution": "Mapped source records into reporting tables and automated transfers through scheduled processing.",
+    "architecture": "MongoDB source \u2192 PHP synchronization jobs \u2192 SQL Server reporting database.",
+    "features": [
+      "Source-to-target field mapping",
+      "Scheduled data transfers",
+      "Relational reporting integration"
+    ],
+    "featured": true
+  },
+  {
+    "id": "catalog",
+    "title": "Product Catalog & Commerce Websites",
+    "description": "Laravel websites and commerce features built during my work at Banglamark, including product catalogs, tender pages and storefront administration.",
+    "screenshot": "/images/catalog.webp",
+    "isPlaceholderScreenshot": false,
+    "technologies": [
+      "Laravel",
+      "MySQL",
+      "JavaScript",
+      "Bootstrap"
+    ],
+    "github": null,
+    "demo": null,
+    "challenges": "Presenting business and product information clearly while supporting administration workflows.",
+    "solution": "Built reusable page layouts and connected product content to Laravel-backed administration.",
+    "architecture": "Laravel application with MySQL storage and responsive Bootstrap interfaces.",
+    "features": [
+      "Product catalog pages",
+      "Administration and storefront features",
+      "Tender landing pages",
+      "Responsive business websites"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cloud",
+    "title": "AWS Deployment Infrastructure",
+    "description": "Infrastructure and delivery configuration for a Laravel development API using Terraform and AWS deployment services.",
+    "screenshot": "/images/cloud.webp",
+    "isPlaceholderScreenshot": false,
+    "technologies": [
+      "Terraform",
+      "AWS",
+      "Docker",
+      "CI/CD"
+    ],
+    "github": null,
+    "demo": null,
+    "challenges": "Keeping environment configuration and deployment steps repeatable and reviewable.",
+    "solution": "Defined infrastructure in Terraform and connected release workflows with AWS deployment and logging services.",
+    "architecture": "Application Load Balancer, EC2 Auto Scaling, CodePipeline, CodeDeploy and CloudWatch logs.",
+    "features": [
+      "Infrastructure as code",
+      "Application deployment pipeline",
+      "Load balancing and instance configuration",
+      "Centralized application logs"
+    ],
+    "featured": false
+  }
 ];

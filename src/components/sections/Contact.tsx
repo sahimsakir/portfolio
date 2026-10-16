@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { EMAILJS_ENABLED } from '@/constants';
 import { personal } from '@/data/resume';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Card } from '@/components/ui/Card';
@@ -22,6 +23,10 @@ export function Contact() {
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
+    if (!EMAILJS_ENABLED) {
+      window.location.href = `mailto:${personal.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`${data.message}\n\nFrom: ${data.name} <${data.email}>`)}`;
+      return;
+    }
     setStatus('sending');
     try {
       await sendContactMessage(data);
@@ -80,6 +85,7 @@ export function Contact() {
 
           <motion.div variants={fadeUp} custom={1} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <Card>
+              <p className="mb-5 text-sm text-ink-dim">{EMAILJS_ENABLED ? 'Send a message directly using this form.' : 'This form opens your email app with a prepared message. You can also copy my email address to contact me directly.'}</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
@@ -151,7 +157,7 @@ export function Contact() {
                     </>
                   ) : (
                     <>
-                      <Send size={16} /> Send message
+                      <Send size={16} /> {EMAILJS_ENABLED ? 'Send message' : 'Open email app'}
                     </>
                   )}
                 </button>
@@ -163,8 +169,7 @@ export function Contact() {
                 )}
                 {status === 'error' && (
                   <p className="flex items-center gap-2 text-sm text-red-400">
-                    <AlertCircle size={16} /> EmailJS isn't configured yet — add your credentials in
-                    src/constants/index.ts.
+                    <AlertCircle size={16} /> Your message could not be sent. Please email me directly using the address alongside this form.
                   </p>
                 )}
               </form>
