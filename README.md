@@ -22,6 +22,7 @@ The contact form opens the visitor's email app by default. Optional direct deliv
 
 - `src/data/resume.ts`: biography, career, education, skills and project case studies.
 - `src/data/blog.ts`: articles, ISO publication dates, tags and official reference links.
+- `public/images/project-ui-*.webp`: generated UI concept previews for project cards and dialogs, with fictional demo data; available at 1280px and 640px.
 - `public/images/`: generated concept artwork in 1280px and 640px WebP versions. These are illustrations, not screenshots of employer systems. Private projects intentionally have no invented demo or repository links.
 - `public/resume.pdf`: existing downloadable resume, retained as provided. Review its contents independently before publishing.
 
@@ -47,3 +48,5 @@ Generated using the built-in imagegen tool. Each prompt requested a wide 16:9, m
 - `public/images/cloud.webp`: sculptural cloud over server modules and a deployment path.
 
 The corresponding `-640.webp` files provide smaller card images. Complete generation prompts are preserved in `docs/image-prompts.md`.
+
+Project UI prompts are documented in `docs/project-ui-prompts.md`. The experience count is maintained in `src/data/resume.ts` and displayed consistently as 6+ years.

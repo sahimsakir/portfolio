@@ -38,7 +38,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="Selected Work"
           title="Featured projects"
-          description="Selected contributions across advertising technology, business applications and cloud delivery. Artwork illustrates each project's domain; employer source code is private."
+          description="Selected contributions across advertising technology, business applications and cloud delivery. UI concept previews represent each project’s functionality; employer source code is private."
         />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -134,7 +134,7 @@ export function Projects() {
                 </button>
               </div>
               <div className="p-5 sm:p-8">
-                <p className="mb-3 text-xs text-ink-dim">AI-generated concept illustration · Not a product screenshot</p>
+                <p className="mb-3 text-xs text-ink-dim">UI concept mockup · Illustrative demo data</p>
                 <p id="project-title" className="font-display text-2xl font-semibold text-ink">{active.title}</p>
                 <p className="mt-3 text-sm leading-relaxed text-ink-dim">{active.description}</p>
 

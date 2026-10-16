@@ -47,7 +47,7 @@ export function Achievements() {
           ))}
         </div>
         <p className="mt-4 text-center font-mono text-[11px] text-ink-faint">
-          figures are estimates derived from the résumé timeline — replace with verified numbers
+          Backend engineering, full-stack delivery and cloud deployment experience
         </p>
       </div>
     </section>

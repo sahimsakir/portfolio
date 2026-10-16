@@ -12,7 +12,7 @@ export function Experience() {
         <SectionHeading
           eyebrow="Experience"
           title="Work experience"
-          description="Four years across ad-tech, fintech-adjacent commerce and platform engineering — moving from full-stack delivery to owning system architecture."
+          description="6+ years across advertising technology, commerce and business applications — from full-stack delivery to backend architecture and cloud deployment."
         />
 
         <div className="relative mt-16 space-y-10 border-l border-white/10 pl-8 sm:pl-10">

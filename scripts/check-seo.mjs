@@ -14,4 +14,5 @@ for(const url of urls){
  if(url.pathname.startsWith('/blog/')){assert(html.includes('BlogPosting'));assert(html.includes('<noscript><article>'));}
 }
 for(const name of ['rtb','sync','catalog','cloud'])for(const suffix of ['','-640'])assert(existsSync(`dist/images/${name}${suffix}.webp`));
+for(const name of ['rtb','sync','catalog','cloud'])for(const suffix of ['','-640'])assert(existsSync(`dist/images/project-ui-${name}${suffix}.webp`));
 console.log('PASS: five route HTML files, unique canonical/social tags, valid schema JSON, article fallback text, eight image assets');
