@@ -6,9 +6,7 @@ export async function sendContactMessage(data: ContactFormData): Promise<void> {
   const { serviceId, templateId, publicKey } = EMAILJS_CONFIG;
 
   if (
-    serviceId.startsWith('PLACEHOLDER') ||
-    templateId.startsWith('PLACEHOLDER') ||
-    publicKey.startsWith('PLACEHOLDER')
+    !serviceId || !templateId || !publicKey
   ) {
     // eslint-disable-next-line no-console
     console.warn('EmailJS is not configured. Update src/constants/index.ts with real credentials.');

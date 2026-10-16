@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, X } from 'lucide-react';
 import { projects } from '@/data/resume';
@@ -11,13 +11,34 @@ import { fadeUp, scaleIn, viewportOnce } from '@/animations/variants';
 export function Projects() {
   const [active, setActive] = useState<ProjectItem | null>(null);
 
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!active) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialogRef.current?.focus();
+    const keydown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActive(null);
+      if (event.key === 'Tab') {
+        const nodes = dialogRef.current?.querySelectorAll<HTMLElement>('button, a[href]');
+        if (!nodes?.length) return;
+        const first = nodes[0], last = nodes[nodes.length - 1];
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialogRef.current)) { event.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener('keydown', keydown);
+    return () => { document.body.style.overflow = overflow; document.removeEventListener('keydown', keydown); previous?.focus(); };
+  }, [active]);
+
   return (
     <section id="projects" className="relative py-28">
       <div className="container-shell">
         <SectionHeading
           eyebrow="Selected Work"
           title="Featured projects"
-          description="A selection of systems I've designed and shipped. Screenshots and links below are placeholders — swap in real project detail."
+          description="Selected contributions across advertising technology, business applications and cloud delivery. Artwork illustrates each project's domain; employer source code is private."
         />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -35,8 +56,8 @@ export function Projects() {
                   <img
                     src={project.screenshot}
                     alt={project.title}
-                    className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                    style={{ maxHeight: '240px' }}
+                    loading="lazy" decoding="async" width={1280} height={720} srcSet={`${project.screenshot.replace('.webp', '-640.webp')} 640w, ${project.screenshot} 1280w`} sizes="(max-width: 767px) 100vw, 50vw" className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+
                   />
                   {project.featured && (
                     <span className="absolute left-4 top-4 rounded-full bg-grad-primary px-3 py-1 font-mono text-[11px] text-white">
@@ -90,6 +111,7 @@ export function Projects() {
             onClick={() => setActive(null)}
           >
             <motion.div
+              ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="project-title" tabIndex={-1}
               variants={scaleIn}
               initial="hidden"
               animate="visible"
@@ -111,8 +133,9 @@ export function Projects() {
                   <X size={16} />
                 </button>
               </div>
-              <div className="p-8">
-                <p className="font-display text-2xl font-semibold text-ink">{active.title}</p>
+              <div className="p-5 sm:p-8">
+                <p className="mb-3 text-xs text-ink-dim">AI-generated concept illustration · Not a product screenshot</p>
+                <p id="project-title" className="font-display text-2xl font-semibold text-ink">{active.title}</p>
                 <p className="mt-3 text-sm leading-relaxed text-ink-dim">{active.description}</p>
 
                 <div className="mt-6 grid gap-5 sm:grid-cols-2">

@@ -18,7 +18,7 @@ export function Home() {
   useEffect(() => {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-    const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    const target = location.hash || (location.state as { scrollTo?: string } | null)?.scrollTo;
 
     if (!target) {
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
@@ -42,7 +42,7 @@ export function Home() {
       }
     };
     requestAnimationFrame(scroll);
-  }, []);
+  }, [location.hash, location.state]);
 
   return (
     <>

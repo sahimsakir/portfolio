@@ -75,6 +75,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  references?: { title: string; url: string }[];
   content: string[]; // paragraphs; simple structure, no markdown parser required
   coverImage: string;
   isPlaceholderCover: boolean;

@@ -5,7 +5,7 @@ import { SEO } from '@/components/common/SEO';
 export function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-6 text-center">
-      <SEO title="404 — Page not found" description="This page could not be found." />
+      <SEO title="404 — Page not found" description="This page could not be found." noindex />
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
